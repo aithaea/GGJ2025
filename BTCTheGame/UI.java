@@ -16,7 +16,7 @@ public class UI extends JFrame
     
     JPanel orderPanel = new JPanel();
     JPanel currentDrinkPanel = new JPanel(new GridLayout(2,4));
-    GamePanel gamePanel = new GamePanel();
+    JPanel gamePanel;
     
     //orderpanel
     JTextArea orderToMake = new JTextArea(5,50);
@@ -24,7 +24,7 @@ public class UI extends JFrame
     //drink panel
     JLabel Ice, currentIce, Tea, currentTea, sugar, currentSugar, pobbles, currentPobbles;
     public UI() {
-        
+        gamePanel = new GamePanel();
         makeOrderPanel();
         makeDrinkPanel();
         makeFrame();

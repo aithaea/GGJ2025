@@ -1,4 +1,6 @@
 import javax.swing.JPanel;
+import java.awt.Canvas;
+import java.awt.*;
 
 /**
  * Write a description of class GamePanel here.
@@ -9,26 +11,37 @@ import javax.swing.JPanel;
 public class GamePanel extends JPanel
 {
     // instance variables - replace the example below with your own
-    private int x;
-
+    //private CanvasClass canvas = new CanvasClass();
+    private Canvas canvas;
     /**
      * Constructor for objects of class GamePanel
      */
     public GamePanel()
     {
-        // initialise instance variables
-        x = 0;
+        canvas = new Canvas() {
+            public void paint(Graphics g) {
+                // set color to red
+                g.setColor(Color.red);
+ 
+                // set Font
+                g.setFont(new Font("Bold", 1, 20));
+ 
+                // draw a string
+                g.drawString("This is a canvas", 100, 100);
+            }
+        };
+        
+        canvas.setBackground(Color.black);
+        
+        
+        
+        //leaveAtTheBottom
+        addCanvas();
+    }
+    
+    public void addCanvas() {
+        System.out.println("Adding the game panel");
+        add(canvas);
     }
 
-    /**
-     * An example of a method - replace this comment with your own
-     *
-     * @param  y  a sample parameter for a method
-     * @return    the sum of x and y
-     */
-    public int sampleMethod(int y)
-    {
-        // put your code here
-        return x + y;
-    }
 }
