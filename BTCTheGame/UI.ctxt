@@ -13,4 +13,6 @@ comment5.params=
 comment5.target=void\ makeFrame()
 comment6.params=
 comment6.target=void\ showFrame()
-numComments=7
+comment7.params=o\ obj
+comment7.target=void\ update(java.util.Observable,\ java.lang.Object)
+numComments=8

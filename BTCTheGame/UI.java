@@ -2,6 +2,8 @@ import javax.swing.JFrame;
 import javax.swing.*;
 import java.awt.BorderLayout;
 import java.awt.GridLayout;
+import java.util.Observer;
+import java.util.Observable;
 
 /**
  * Write a description of class UI here.
@@ -9,7 +11,7 @@ import java.awt.GridLayout;
  * @author (your name)
  * @version (a version number or a date)
  */
-public class UI extends JFrame
+public class UI extends JFrame implements Observer
 {
     // instance variables - replace the example below with your own
     GameModel model = new GameModel();
@@ -46,13 +48,13 @@ public class UI extends JFrame
     }
     public void makeDrinkPanel() {
         //currentDrinkPanel.layout(new GridLayout(2,4));
-        JLabel Ice =new JLabel("Ice");
+        Ice =new JLabel("Ice");
         currentDrinkPanel.add(Ice);
         
-        JLabel currentIce = new JLabel("0");
+        currentIce = new JLabel("0");
         currentDrinkPanel.add(currentIce);
         
-        JLabel Tea = new JLabel("Tea");
+        Tea = new JLabel("Tea");
         currentDrinkPanel.add(Tea);
     }
     public void makeFrame() {
@@ -66,5 +68,9 @@ public class UI extends JFrame
     }
     public void showFrame() {
         this.setVisible(true);
+    }
+    @Override
+    public void update(Observable o, Object obj) {
+        
     }
 }
