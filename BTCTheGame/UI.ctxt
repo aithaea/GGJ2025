@@ -1,0 +1,16 @@
+#BlueJ class context
+comment0.target=UI
+comment0.text=\r\n\ Write\ a\ description\ of\ class\ UI\ here.\r\n\r\n\ @author\ (your\ name)\r\n\ @version\ (a\ version\ number\ or\ a\ date)\r\n
+comment1.params=
+comment1.target=UI()
+comment2.params=
+comment2.target=void\ populateOrderPanel()
+comment3.params=
+comment3.target=void\ makeOrderPanel()
+comment4.params=
+comment4.target=void\ makeDrinkPanel()
+comment5.params=
+comment5.target=void\ makeFrame()
+comment6.params=
+comment6.target=void\ showFrame()
+numComments=7
