@@ -16,7 +16,7 @@ public class GameModel extends Observable
     double goalSugar;
     UI model;
     public GameModel() {
-        model = new UI();
+        model = new UI(this);
         addObserver(model);
     }
     public String randomPobble(){

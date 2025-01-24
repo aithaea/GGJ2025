@@ -14,7 +14,7 @@ import java.util.Observable;
 public class UI extends JFrame implements Observer
 {
     // instance variables - replace the example below with your own
-    GameModel model = new GameModel();
+    GameModel model;
     
     JPanel orderPanel = new JPanel();
     JPanel currentDrinkPanel = new JPanel(new GridLayout(2,4));
@@ -25,8 +25,10 @@ public class UI extends JFrame implements Observer
     
     //drink panel
     JLabel Ice, currentIce, Tea, currentTea, sugar, currentSugar, pobbles, currentPobbles;
-    public UI() {
+    public UI(GameModel model) {
+        this.model = model;
         gamePanel = new GamePanel();
+        
         makeOrderPanel();
         makeDrinkPanel();
         makeFrame();
