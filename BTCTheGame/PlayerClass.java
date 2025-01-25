@@ -8,26 +8,27 @@
 public class PlayerClass
 {
     // instance variables - replace the example below with your own
-    private int x;
-
+    private int posX, posY;
+    public static int OGSPAWN = 17;
     /**
      * Constructor for objects of class PlayerClass
      */
     public PlayerClass()
     {
-        // initialise instance variables
-        x = 0;
+        // spawn player
+        this.posY=8;
+        this.posX=OGSPAWN;
     }
 
-    /**
-     * An example of a method - replace this comment with your own
-     *
-     * @param  y  a sample parameter for a method
-     * @return    the sum of x and y
-     */
-    public int sampleMethod(int y)
-    {
-        // put your code here
-        return x + y;
+    public int moveLeft(){
+        posX=posX-1;
+        return posX;
+    }
+    public int moveRight(){
+        posX=posX+1;
+        return posX;
+    }
+    public int getPosition() {
+        return posX;
     }
 }

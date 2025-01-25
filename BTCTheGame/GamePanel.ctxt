@@ -1,11 +1,13 @@
 #BlueJ class context
 comment0.target=GamePanel
-comment0.text=\r\n\ Write\ a\ description\ of\ class\ GamePanel\ here.\r\n\r\n\ @author\ (your\ name)\r\n\ @version\ (a\ version\ number\ or\ a\ date)\r\n
+comment0.text=\n\ Write\ a\ description\ of\ class\ GamePanel\ here.\n\n\ @author\ (your\ name)\n\ @version\ (a\ version\ number\ or\ a\ date)\n
 comment1.params=
 comment1.target=GamePanel()
-comment1.text=\r\n\ Constructor\ for\ objects\ of\ class\ GamePanel\r\n
-comment2.params=g
-comment2.target=void\ paint(java.awt.Graphics)
+comment1.text=\n\ Constructor\ for\ objects\ of\ class\ GamePanel\n
+comment2.params=r
+comment2.target=void\ setPlayerLocation(int)
 comment3.params=
 comment3.target=void\ addCanvas()
-numComments=4
+comment4.params=img
+comment4.target=javax.swing.ImageIcon\ resizeImage(java.lang.String)
+numComments=5

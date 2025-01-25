@@ -14,10 +14,20 @@ public class GameModel extends Observable
     String goalPobble;
     String goalTea;
     double goalSugar;
+    
+    String currentTea, currentPobble;
+    double currentSugar, currentIce;
     UI model;
+    PlayerClass player;
     public GameModel() {
         model = new UI(this);
+        
         addObserver(model);
+        currentIce = 0.0;
+        currentPobble = "";
+        currentTea = "";
+        currentSugar = 0.0;
+        player=new PlayerClass();
     }
     public String randomPobble(){
         String[] pobbleOptions = {"Tapioka","Mango","Apple","Passion Fruit","Lemon"};
@@ -52,5 +62,32 @@ public class GameModel extends Observable
             return false;
         }
     }
+    
+    public void playerMove(char move) {
+        if (move == 'a') {
+            player.moveLeft();
+        } else if (move == 'd') {
+            player.moveRight();
+        }
+    }
+    public int getPlayerLocation() {
+        return player.getPosition();
+    }
+    //getters
+    public String getCurrentTea() {return currentTea;}
+    public String getCurrentPobbles(){return currentPobble;}
+    public double getCurrentIce(){return currentIce;}
+    public double getCurrentSugar(){return currentSugar;}
+    public String getGoalTea(){return goalTea;}
+    public String getGoalPobbles(){return goalPobble;}
+    public double getGoalIce(){return goalIce;}
+    public double getGoalSugar(){return goalSugar;}
+    //setters
+    public void setCurrentTea(String tea){this.currentTea = tea;}
+    public void setCurrentPPobbles(String pobbles){this.currentPobble = pobbles;}
+    public void setCurrentIce(double ice){this.currentIce = ice;}
+    public void setCurrentSugar(double sugar){this.currentSugar = sugar;}
+    
+    
 }
 

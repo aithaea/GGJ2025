@@ -1,6 +1,6 @@
 #BlueJ class context
 comment0.target=UI
-comment0.text=\r\n\ Write\ a\ description\ of\ class\ UI\ here.\r\n\r\n\ @author\ (your\ name)\r\n\ @version\ (a\ version\ number\ or\ a\ date)\r\n
+comment0.text=\n\ Write\ a\ description\ of\ class\ UI\ here.\n\n\ @author\ (your\ name)\n\ @version\ (a\ version\ number\ or\ a\ date)\n
 comment1.params=model
 comment1.target=UI(GameModel)
 comment2.params=
@@ -15,4 +15,8 @@ comment6.params=
 comment6.target=void\ showFrame()
 comment7.params=o\ obj
 comment7.target=void\ update(java.util.Observable,\ java.lang.Object)
-numComments=8
+comment8.params=
+comment8.target=void\ testButtonPanel()
+comment9.params=event
+comment9.target=void\ actionPerformed(java.awt.event.ActionEvent)
+numComments=10
