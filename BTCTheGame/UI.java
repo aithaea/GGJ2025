@@ -18,22 +18,26 @@ public class UI extends JFrame implements Observer, ActionListener
     // instance variables - replace the example below with your own
     GameModel model;
     
-    JPanel orderPanel = new JPanel();
-    JPanel currentDrinkPanel = new JPanel(new GridLayout(4,2));
+    JPanel orderPanel = new CustomPanel("Frame1.png");
+    JPanel currentDrinkPanel = new CustomPanel("Frame2.png");
     GamePanel gamePanel;
-    JPanel testButtons = new JPanel();
+    JPanel testButtons = new CustomPanel("Frame1.png");
     JLabel scoreLabel = new JLabel();
-    JPanel conditionalPanel = new JPanel();
+    JPanel conditionalPanel = new CustomPanel("Frame2.png");
     int score = 000000;
-    JPanel panelToHoldPanels = new JPanel();
+    JPanel panelToHoldPanels = new JPanel(new GridLayout(1,3));
     //orderpanel
-    JTextArea orderToMake = new JTextArea(5,50);
+    JTextArea orderToMake = new JTextArea(5,30);
     
     //drink panel
     JLabel Ice, currentIce, Tea, currentTea, sugar, currentSugar, pobbles, currentPobbles;
     public UI(GameModel model) {
         this.model = model;
         gamePanel = new GamePanel(model.getPlayer());
+        panelToHoldPanels = new CustomPanel("Frame1.png");
+        panelToHoldPanels.setLayout(new GridLayout(1,3));
+        currentDrinkPanel.setLayout(new GridLayout(4,2));
+            //Image img = new Image();
         testButtonPanel();
         makeOrderPanel();
         makeDrinkPanel();
@@ -54,6 +58,7 @@ public class UI extends JFrame implements Observer, ActionListener
     public void makeOrderPanel() {
         populateOrderPanel();
         orderToMake.setEditable(false);
+        orderToMake.setOpaque(false);
         orderPanel.add(orderToMake);
     }
     
@@ -94,9 +99,9 @@ public class UI extends JFrame implements Observer, ActionListener
         conditionalPanel.add(scoreLabel);
     }
     public void makeFrame() {
-        panelToHoldPanels.add(orderPanel, BorderLayout.CENTER);
-        panelToHoldPanels.add(currentDrinkPanel,BorderLayout.EAST);
-        panelToHoldPanels.add(conditionalPanel, BorderLayout.WEST);
+        panelToHoldPanels.add(orderPanel);
+        panelToHoldPanels.add(currentDrinkPanel);
+        panelToHoldPanels.add(conditionalPanel);
         add(panelToHoldPanels, BorderLayout.NORTH);
         add(gamePanel, BorderLayout.CENTER);
         
