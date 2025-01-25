@@ -72,6 +72,7 @@ public class DrinkMaking
             generateDrinks();
             score += 10;
             changeDrinks = true;
+            clearcup();
             return true;
         } else {
             if (score > 0)
@@ -80,6 +81,7 @@ public class DrinkMaking
         }
     }
     public int getScore() {return score;}
+    public void clearcup(){currentTea="";currentIce=0.0;currentSugar=0.0;currentPobble="";}
     public void interactControls(int r) {
         switch (r){
             case 0:currentIce+=0.25;break;
@@ -93,7 +95,7 @@ public class DrinkMaking
             case 8: currentTea = "Nuclear Apple";break;
             case 9: currentTea = "Lemon";break;
             case 10: currentTea = "Milk";break;
-            case 11: currentTea="PassionFruit";break;
+            case 11: currentTea="Passion Fruit";break;
             case 12: currentTea="Peach";break;
             case 14: checkDrinkAtCounter();break;
     }

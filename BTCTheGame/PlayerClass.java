@@ -33,9 +33,9 @@ public class PlayerClass
         return posX;
     }
     public ImageIcon getIcon() {
-        ImageIcon imageIcon = new ImageIcon("Images/" + "SUGAR.png"); // load the image to a imageIcon
+        ImageIcon imageIcon = new ImageIcon("Images/" + "PlayerForward.png"); // load the image to a imageIcon
         Image image = imageIcon.getImage(); // transform it 
-        Image newimg = image.getScaledInstance(120, 150,  java.awt.Image.SCALE_SMOOTH); // scale it the smooth way  
+        Image newimg = image.getScaledInstance(120, 200,  java.awt.Image.SCALE_SMOOTH); // scale it the smooth way  
         imageIcon = new ImageIcon(newimg);  // transform it back
         return imageIcon;
     }
