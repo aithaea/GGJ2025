@@ -25,7 +25,7 @@ public class GameModel extends Observable
         view = new UI(this);
         
         addObserver(view);
-        System.out.println(countObservers()+"");
+        //System.out.println(countObservers()+"");
         
         
     }
@@ -33,13 +33,14 @@ public class GameModel extends Observable
     
     
     public void playerMove(char move) {
-        System.out.println("PlayerMove");
+        //System.out.println("PlayerMove");
+        
         if (move == 'a') {
-            System.out.println("a");
+            //System.out.println("a");
             if (player.getPosition()!=0)
                 player.moveLeft();
         } else if (move == 'd' ){
-            System.out.println("d");
+            //System.out.println("d");
             if (player.getPosition() != 17)
                 player.moveRight();
         } 
@@ -53,6 +54,7 @@ public class GameModel extends Observable
         return makeDrink;
     }
     public void makeDrinks() {
+        player.setDirection();
         makeDrink.interactControls(player.getPosition());
         setChanged();
         notifyObservers(this);

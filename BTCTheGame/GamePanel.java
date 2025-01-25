@@ -18,6 +18,7 @@ public class GamePanel extends JPanel
     PlayerClass player;
     int playerHistoricLoc;
     JLabel[][] labels;
+    int background = 0;
     //variables for drink rowse
     /**
      * Constructor for objects of class GamePanel
@@ -91,7 +92,10 @@ public class GamePanel extends JPanel
             }
         }
     }
-    
+    public void toggleBackground(){
+        background = (int) (Math.random()*20);
+        repaint();
+    }
     public void setPlayerLocation(int r, PlayerClass player) {
         labels[3][playerHistoricLoc].setIcon(resizeImage("BLANK.png"));
         labels[3][r].setIcon(player.getIcon());
@@ -112,10 +116,14 @@ public class GamePanel extends JPanel
     }
     @Override
   protected void paintComponent(Graphics g) {
-
     super.paintComponent(g);
-    Image img = Toolkit.getDefaultToolkit().getImage("Images/Background.png");
+    Image img;
+    if (background != 1) {
+        img = Toolkit.getDefaultToolkit().getImage("Images/Background1.png");
+    } else {
+        img = Toolkit.getDefaultToolkit().getImage("Images/Background2.png");
 
+    }
     //Image img = new Image();
         g.drawImage(img, 0, 0, this.getWidth(), this.getHeight(), null);
 }

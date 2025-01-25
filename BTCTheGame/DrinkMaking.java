@@ -65,7 +65,7 @@ public class DrinkMaking
         goalTea();
         goalIce();
         randomPobble();
-        System.out.print(goalTea + " " + goalPobble + " " + goalIce + " " + goalSugar + " ");
+        //System.out.print(goalTea + " " + goalPobble + " " + goalIce + " " + goalSugar + " ");
     }
     public boolean checkDrinkAtCounter() {
         if (currentIce == goalIce && currentSugar == goalSugar && currentTea.equals(goalTea) && currentPobble.equals(goalPobble)){
@@ -77,6 +77,7 @@ public class DrinkMaking
         } else {
             if (score > 0)
                 score -=10;
+            clearcup();    
             return false;
         }
     }
