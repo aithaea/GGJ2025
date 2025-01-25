@@ -22,7 +22,9 @@ public class UI extends JFrame implements Observer, ActionListener
     JPanel currentDrinkPanel = new JPanel(new GridLayout(4,2));
     GamePanel gamePanel;
     JPanel testButtons = new JPanel();
-    
+    JLabel scoreLabel = new JLabel();
+    JPanel conditionalPanel = new JPanel();
+    int score = 000000;
     //orderpanel
     JTextArea orderToMake = new JTextArea(5,50);
     
@@ -30,20 +32,21 @@ public class UI extends JFrame implements Observer, ActionListener
     JLabel Ice, currentIce, Tea, currentTea, sugar, currentSugar, pobbles, currentPobbles;
     public UI(GameModel model) {
         this.model = model;
-        gamePanel = new GamePanel();
+        gamePanel = new GamePanel(model.getPlayer());
         testButtonPanel();
         makeOrderPanel();
         makeDrinkPanel();
+        scoreConditionsPanel();
         makeFrame();
         showFrame();
     }
     
     public void populateOrderPanel() {
         String orderString = "";
-        orderString += "Ice" + " " + model.getGoalIce();
-        orderString += "\nTea" + " " + model.getGoalTea();
-        orderString += "\nPobble" + " " + model.getGoalPobbles();
-        orderString += "\nSugar" + " " + model.getGoalSugar();
+        orderString += "Ice" + " " + model.getDrinks().getGoalIce();
+        orderString += "\nTea" + " " + model.getDrinks().getGoalTea();
+        orderString += "\nPobble" + " " + model.getDrinks().getGoalPobbles();
+        orderString += "\nSugar" + " " + model.getDrinks().getGoalSugar();
         orderToMake.setText(orderString);
     }
     
@@ -58,32 +61,37 @@ public class UI extends JFrame implements Observer, ActionListener
         Ice =new JLabel("Ice");
         currentDrinkPanel.add(Ice);
         
-        currentIce = new JLabel("" + model.getCurrentIce());
+        currentIce = new JLabel("" + model.getDrinks().getCurrentIce());
         currentDrinkPanel.add(currentIce);
         
         Tea = new JLabel("Tea");
         currentDrinkPanel.add(Tea);
         
-        currentTea = new JLabel(model.getCurrentTea());
+        currentTea = new JLabel(model.getDrinks().getCurrentTea());
         currentDrinkPanel.add(currentTea);
         
         sugar = new JLabel("Sugar");
         currentDrinkPanel.add(sugar);
         
-        currentSugar = new JLabel("" + model.getCurrentSugar());
+        currentSugar = new JLabel("" + model.getDrinks().getCurrentSugar());
         currentDrinkPanel.add(currentSugar);
         
         pobbles = new JLabel("Pobbles");
         currentDrinkPanel.add(pobbles);
         
-        currentPobbles = new JLabel(model.getCurrentPobbles());
+        currentPobbles = new JLabel(model.getDrinks().getCurrentPobbles());
         currentDrinkPanel.add(currentPobbles);
         
+    }
+    public void scoreConditionsPanel() {
+        scoreLabel = new JLabel(""+score);
+        conditionalPanel.add(scoreLabel);
     }
     public void makeFrame() {
         
         add(orderPanel, BorderLayout.NORTH);
         add(currentDrinkPanel,BorderLayout.WEST);
+        add(conditionalPanel, BorderLayout.EAST);
         add(gamePanel, BorderLayout.CENTER);
         
         //setSize(900,900);
@@ -94,16 +102,25 @@ public class UI extends JFrame implements Observer, ActionListener
     }
     @Override
     public void update(Observable o, Object obj) {
-        currentPobbles.setText(model.getCurrentPobbles());
-        currentSugar.setText(""+model.getCurrentSugar());
-        currentIce.setText(""+model.getCurrentIce());
-        currentTea.setText(model.getCurrentTea());
+        System.out.println("Observers are notified");
         
-        int r = model.getPlayerLocation();
-        gamePanel.setPlayerLocation(r);
+        currentPobbles.setText(model.getDrinks().getCurrentPobbles());
+        currentSugar.setText(""+model.getDrinks().getCurrentSugar());
+        currentIce.setText(""+model.getDrinks().getCurrentIce());
+        currentTea.setText(model.getDrinks().getCurrentTea());
         
+        int r = model.getPlayer().getPosition();
+        System.out.print(r);
+        gamePanel.setPlayerLocation(r,model.getPlayer());
+        
+        scoreLabel.setText(""+model.getDrinks().getScore());
+        if (model.getDrinks().getChangeDrinks() == true){
+            model.getDrinks().setChangeDrinks(false);
+            populateOrderPanel();
+        }
+        gamePanel.repaint();
         //generate textarea string
-        populateOrderPanel();
+        
         
     }
     public void testButtonPanel() {
@@ -125,11 +142,12 @@ public class UI extends JFrame implements Observer, ActionListener
     }
     public void actionPerformed(ActionEvent event) {
         System.out.println(event.getActionCommand());
-        if (event.getActionCommand().equals("left")) {
+        if (event.getActionCommand().equals("Left")) {
             model.playerMove('a');
-            
-        } else if (event.getActionCommand().equals("right")) {
+        } else if (event.getActionCommand().equals("Right")) {
             model.playerMove('d');
+        } else if (event.getActionCommand().equals("Interact")) {
+            model.makeDrinks();
         }
         
     }
