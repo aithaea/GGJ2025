@@ -29,11 +29,16 @@ public class UI extends JFrame implements Observer, ActionListener
     //orderpanel
     JTextArea orderToMake = new JTextArea(5,30);
     
+    TimerClass timerPanel;
+   
+    
     //drink panel
     JLabel Ice, currentIce, Tea, currentTea, sugar, currentSugar, pobbles, currentPobbles;
     public UI(GameModel model) {
         this.model = model;
         gamePanel = new GamePanel(model.getPlayer());
+        timerPanel = new TimerClass();
+         timerPanel.calculateCurrent();
         panelToHoldPanels = new CustomPanel("Frame1.png");
         panelToHoldPanels.setLayout(new GridLayout(1,3));
         currentDrinkPanel.setLayout(new GridLayout(4,2));
@@ -97,6 +102,9 @@ public class UI extends JFrame implements Observer, ActionListener
         conditionalPanel.add(scoreTitle);
         scoreLabel = new JLabel("00"+score);
         conditionalPanel.add(scoreLabel);
+        JLabel timeLabel = new JLabel("Time Remaining");
+        conditionalPanel.add(timeLabel);
+        conditionalPanel.add(timerPanel);
     }
     public void makeFrame() {
         panelToHoldPanels.add(orderPanel);
@@ -151,9 +159,11 @@ public class UI extends JFrame implements Observer, ActionListener
         testButtons.add(rightButton);
         testButtons.add(interactButton);
         add(testButtons, BorderLayout.SOUTH);
+        
     }
     public void actionPerformed(ActionEvent event) {
         //System.out.println(event.getActionCommand());
+        timerPanel.calculateCurrent();
         if (event.getActionCommand().equals("Left")) {
             model.playerMove('a');
         } else if (event.getActionCommand().equals("Right")) {
@@ -163,4 +173,9 @@ public class UI extends JFrame implements Observer, ActionListener
         }
         
     }
+
 }
+
+
+
+
