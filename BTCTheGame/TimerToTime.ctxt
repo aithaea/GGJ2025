@@ -1,0 +1,16 @@
+#BlueJ class context
+comment0.target=TimerToTime
+comment0.text=\n\ Write\ a\ description\ of\ class\ TimerToTime\ here.\n\n\ @author\ (your\ name)\n\ @version\ (a\ version\ number\ or\ a\ date)\n
+comment1.params=displayedSeconds\ displayedMinutes\ ui
+comment1.target=TimerToTime(javax.swing.JLabel,\ javax.swing.JLabel,\ UI)
+comment2.params=
+comment2.target=void\ calculateCurrent()
+comment3.params=
+comment3.target=void\ run()
+comment4.params=
+comment4.target=java.lang.String\ getCurrentTime()
+comment5.params=
+comment5.target=void\ addToTimer()
+comment6.params=
+comment6.target=java.lang.String\ getStatus()
+numComments=7

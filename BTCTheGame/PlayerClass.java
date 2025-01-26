@@ -11,7 +11,7 @@ public class PlayerClass
 {
     // instance variables - replace the example below with your own
     private int posX, posY;
-    public static int OGSPAWN = 15;
+    public static int OGSPAWN = 14;
     private String direction = "front";
     /**
      * Constructor for objects of class PlayerClass
@@ -38,9 +38,10 @@ public class PlayerClass
     public int getPosition() {
         return posX;
     }
+    public void setPosition(){this.posX=15;}
     public ImageIcon getIcon() {
         if (direction.equals("left")){
-            ImageIcon imageIcon = new ImageIcon("Images/" + "PlayerLeft.png"); // load the image to a imageIcon
+        ImageIcon imageIcon = new ImageIcon("Images/" + "PlayerLeft.png"); // load the image to a imageIcon
         Image image = imageIcon.getImage(); // transform it 
         Image newimg = image.getScaledInstance(120, 200,  java.awt.Image.SCALE_SMOOTH); // scale it the smooth way  
         imageIcon = new ImageIcon(newimg);  // transform it back

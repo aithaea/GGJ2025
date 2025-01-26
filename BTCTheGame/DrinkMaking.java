@@ -36,8 +36,8 @@ public class DrinkMaking
         
     }
     public String randomPobble(){
-        String[] pobbleOptions = {"Tapioka","Mango","Apple","Passion Fruit","Lemon","Peach","Blueberry"};
-        int pobble = (int) (Math.random() * 7);
+        String[] pobbleOptions = {"Tapioka","Mango","Apple","Lemon","Peach","Blueberry"};
+        int pobble = (int) (Math.random() * 6);
         //System.out.println(pobble + " " + pobbleOptions[pobble]);
         goalPobble = pobbleOptions[pobble];
         return goalPobble;

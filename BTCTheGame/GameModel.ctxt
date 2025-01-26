@@ -1,6 +1,6 @@
 #BlueJ class context
 comment0.target=GameModel
-comment0.text=\r\n\ Write\ a\ description\ of\ class\ GameModel\ here.\r\n\r\n\ @author\ (your\ name)\r\n\ @version\ (a\ version\ number\ or\ a\ date)\r\n
+comment0.text=\n\ Write\ a\ description\ of\ class\ GameModel\ here.\n\n\ @author\ (your\ name)\n\ @version\ (a\ version\ number\ or\ a\ date)\n
 comment1.params=
 comment1.target=GameModel()
 comment2.params=move
@@ -8,7 +8,9 @@ comment2.target=void\ playerMove(char)
 comment3.params=
 comment3.target=PlayerClass\ getPlayer()
 comment4.params=
-comment4.target=DrinkMaking\ getDrinks()
+comment4.target=CustomerClass\ getCustomer()
 comment5.params=
-comment5.target=void\ makeDrinks()
-numComments=6
+comment5.target=DrinkMaking\ getDrinks()
+comment6.params=
+comment6.target=void\ makeDrinks()
+numComments=7

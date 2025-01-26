@@ -1,13 +1,11 @@
 #BlueJ class context
 comment0.target=TimerClass
-comment0.text=\r\n\ Write\ a\ description\ of\ class\ Timer\ here.\r\n\r\n\ @author\ (your\ name)\r\n\ @version\ (a\ version\ number\ or\ a\ date)\r\n
-comment1.params=
-comment1.target=TimerClass()
-comment1.text=\r\n\ Constructor\ for\ objects\ of\ class\ Timer\r\n
+comment0.text=\n\ Write\ a\ description\ of\ class\ Timer\ here.\n\n\ @author\ (your\ name)\n\ @version\ (a\ version\ number\ or\ a\ date)\n
+comment1.params=ui
+comment1.target=TimerClass(UI)
+comment1.text=\n\ Constructor\ for\ objects\ of\ class\ Timer\n
 comment2.params=
-comment2.target=void\ calculateCurrent()
+comment2.target=TimerToTime\ getTimer()
 comment3.params=
-comment3.target=void\ run()
-comment4.params=
-comment4.target=void\ displayTimer()
-numComments=5
+comment3.target=void\ displayTimer()
+numComments=4

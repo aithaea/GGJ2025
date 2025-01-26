@@ -15,9 +15,11 @@ public class GameModel extends Observable
     
     UI view;
     PlayerClass player;
+    CustomerClass customer;
     DrinkMaking makeDrink;
     public GameModel() {
         player=new PlayerClass();
+        customer = new CustomerClass();
         makeDrink = new DrinkMaking();
         
         
@@ -49,6 +51,9 @@ public class GameModel extends Observable
     }
     public PlayerClass getPlayer() {
         return player;
+    }
+    public CustomerClass getCustomer() {
+        return customer;
     }
     public DrinkMaking getDrinks() {
         return makeDrink;

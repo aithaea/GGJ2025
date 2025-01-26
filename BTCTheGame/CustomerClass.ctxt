@@ -1,0 +1,14 @@
+#BlueJ class context
+comment0.target=CustomerClass
+comment0.text=\n\ Write\ a\ description\ of\ class\ CustomerClass\ here.\n\n\ @author\ (your\ name)\n\ @version\ (a\ version\ number\ or\ a\ date)\n
+comment1.params=
+comment1.target=CustomerClass()
+comment2.params=
+comment2.target=java.lang.String\ pickRandomCustomer()
+comment3.params=
+comment3.target=javax.swing.ImageIcon[]\ incrementCustomers()
+comment4.params=
+comment4.target=javax.swing.ImageIcon[]\ customerImages()
+comment5.params=s
+comment5.target=javax.swing.ImageIcon\ resizeImages(java.lang.String)
+numComments=6

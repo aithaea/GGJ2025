@@ -2,6 +2,9 @@ import javax.swing.JPanel;
 import javax.swing.JLabel;
 import java.awt.GridLayout; 
 import java.util.concurrent.ScheduledExecutorService;
+import java.util.Observable;
+import java.util.Observer;
+
 //import javax.swing.*;
 import java.util.concurrent.TimeUnit;
 import java.util.concurrent.Executors;
@@ -18,16 +21,13 @@ public class TimerClass extends JPanel
 {
     // instance variables - replace the example below with your own
     public JLabel displayedSeconds, displayedMinutes, colon;
-    public long startTime;
-    public long elapsedtime;
-    public long elapsedSeconds;
-    public long secondsDisplay;
-    public long elapsedMinutes;
-    public long elapsedTime2 = 0;
+    
+    private TimerToTime timer;
+    //private GameModel model;
     /**
      * Constructor for objects of class Timer
      */
-    public TimerClass()
+    public TimerClass(UI ui)
     {
         displayedSeconds = new JLabel("00");
         colon = new JLabel(":");
@@ -35,33 +35,16 @@ public class TimerClass extends JPanel
         setLayout(new GridLayout(1,3));
         displayTimer();
         setOpaque(false);
-        startTime = System.currentTimeMillis();
+        
+        timer = new TimerToTime(displayedSeconds, displayedMinutes, ui);
     }
-
-    public void calculateCurrent() {
-        Timer timer = new Timer();
-        timer.schedule(new TimerTask() {
-            @Override
-            public void run() {
-                elapsedTime2 +=1;
-                //System.out.print(elapsedTime2);
-                secondsDisplay = (60 - elapsedTime2) % 60;
-                elapsedMinutes = secondsDisplay / 60;
-                displayedSeconds.setText(secondsDisplay + "");
-                displayedMinutes.setText(elapsedMinutes + "");
-                repaint();
-            }
-        },0,1000);
-        
-        
-        
+    public TimerToTime getTimer() {
+        return timer;
     }
-
     public void displayTimer() {
-
         add(displayedMinutes);
         add(colon);
         add(displayedSeconds);
-
     }
+    
 }
