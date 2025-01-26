@@ -32,9 +32,13 @@ public class TimerClass extends JPanel
     public TimerClass(UI ui)
     {
         displayedSeconds = new JLabel("00");
-        displayedSeconds.setFont(new Font("Chalkduster", Font.BOLD,18));
+        displayedSeconds.setFont(new Font("Chalkduster", Font.BOLD,22));
         colon = new JLabel(":");
+                colon.setFont(new Font("Chalkduster", Font.BOLD,22));
+
         displayedMinutes = new JLabel("00");
+                displayedMinutes.setFont(new Font("Chalkduster", Font.BOLD,22));
+
         setLayout(new GridLayout(1,3));
         displayTimer();
         setOpaque(false);

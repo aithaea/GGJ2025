@@ -32,11 +32,11 @@ public class TimerToTime extends Observable
             public void run() {
                 elapsedTime2 +=1;
                 //System.out.print(elapsedTime2);
-                secondsDisplay = (60 - elapsedTime2) % 60;
-                elapsedMinutes = secondsDisplay / 60;
+                secondsDisplay = (75 - elapsedTime2) % 60;
+                elapsedMinutes = (75-elapsedTime2) / 60;
                 displayedSeconds.setText(secondsDisplay + "");
                 displayedMinutes.setText(elapsedMinutes + "");
-                if (secondsDisplay == 0) {
+                if ((secondsDisplay == 0 && elapsedMinutes != 1)  ){
                     timer.cancel();
                     status="stopped";
                     setChanged();
@@ -52,7 +52,7 @@ public class TimerToTime extends Observable
         
     }
     public String getCurrentTime() {
-        return ""+secondsDisplay;
+        return ""+elapsedTime2;
     }
     public void addToTimer() {
         this.elapsedTime2 -= 10;

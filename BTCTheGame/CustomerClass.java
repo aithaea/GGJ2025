@@ -12,6 +12,7 @@ public class CustomerClass
     String[] customers;
     String queueingCustomer, currentCustomer;
     ImageIcon queueingImage, currentImage;
+    private double height;
     public CustomerClass() {
          queueingCustomer = pickRandomCustomer();
          currentCustomer = pickRandomCustomer();
@@ -50,7 +51,7 @@ public class CustomerClass
     public ImageIcon resizeImages(String s) {
         ImageIcon imageIcon = new ImageIcon("Images/" + s); // load the image to a imageIcon
         Image image = imageIcon.getImage(); // transform it 
-        Image newimg = image.getScaledInstance(100, 180,  java.awt.Image.SCALE_SMOOTH); // scale it the smooth way  
+        Image newimg = image.getScaledInstance(100, 150,  java.awt.Image.SCALE_SMOOTH); // scale it the smooth way  
         imageIcon = new ImageIcon(newimg);  // transform it back
         return imageIcon;
     }

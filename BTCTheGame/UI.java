@@ -10,6 +10,9 @@ import javax.swing.JOptionPane;
 import java.awt.event.KeyListener;
 import java.awt.event.KeyEvent;
 import java.awt.Image;
+import java.awt.Font;
+import javax.imageio.ImageIO;
+import java.awt.Color;
 
 /**
  * Write a description of class UI here.
@@ -21,7 +24,7 @@ public class UI extends JFrame implements Observer, ActionListener
 {
     // instance variables - replace the example below with your own
     GameModel model;
-    
+    Sound sound;
     JPanel orderPanel = new CustomPanel("Frame1.png");
     JPanel currentDrinkPanel = new CustomPanel("Frame2.png");
     GamePanel gamePanel;
@@ -31,24 +34,26 @@ public class UI extends JFrame implements Observer, ActionListener
     int score = 000000;
     JPanel panelToHoldPanels = new JPanel(new GridLayout(1,3));
     //orderpanel
-    JTextArea orderToMake = new JTextArea(5,30);
-    
+    JTextArea orderToMake = new JTextArea(5,15);
+    JButton leftButton, rightButton, interactButton;
     TimerClass timerPanel;
-   
+    public double avatarHeight;
     
     //drink panel
-    JLabel Ice, currentIce, Tea, currentTea, sugar, currentSugar, pobbles, currentPobbles;
+    JLabel Ice, currentIce, Tea, currentTea, sugar, currentSugar, pobbles, currentPobbles, drinkImage;
     public UI(GameModel model) {
         super("Bubble Tea Club the Game");
         this.model = model;
         gamePanel = new GamePanel(model.getPlayer().getIcon(),model.getCustomer().customerImages(), this);
         //addKeyListener(this);
-
+        sound = new Sound("Audio/gameAudio.wav");
         int start = JOptionPane.showConfirmDialog(null, "Welcome to BTC the game, your mission is to create customer's orders before time runs out. Each drink you make will earn you extra time, and some money. But don't get the drink wrong!\n Are you ready?","Welcome",JOptionPane.INFORMATION_MESSAGE);
         if (start != 0) {
             System.exit(0);
         }
         
+        sound.play();
+        sound.loop();
         
         
         panelToHoldPanels = new CustomPanel("Frame1.png");
@@ -65,6 +70,7 @@ public class UI extends JFrame implements Observer, ActionListener
         makeFrame();
         showFrame();
     }
+    
     public void makeTimerPanel() {
         timerPanel = new TimerClass(this);
         try{
@@ -79,8 +85,11 @@ public class UI extends JFrame implements Observer, ActionListener
         orderString += "\nSugar" + " " + model.getDrinks().getGoalSugar();
         orderToMake.setText(orderString);
     }
-    
+    public double getAvatarHeight(){
+        return getHeight() / 5;
+    }
     public ImageIcon populateOrderIcon() {
+        System.out.println("Recalculating Image");
         if (model.getDrinks().getGoalTea().equals("Nuclear Apple")) {
             if (model.getDrinks().getGoalPobbles().equals("Apple")) {
                 return resizeBubbleTea("AppleApple.png");
@@ -121,7 +130,7 @@ public class UI extends JFrame implements Observer, ActionListener
                 
                 return resizeBubbleTea("PeachBlueberry.png");
             }  
-        }    else if(model.getDrinks().getGoalTea().equals("Passionfruit")) {
+        }    else if(model.getDrinks().getGoalTea().equals("Passion Fruit")) {
             if (model.getDrinks().getGoalPobbles().equals("Apple")) {
                 return resizeBubbleTea("PassionfruitApple.png");
 
@@ -184,19 +193,23 @@ public class UI extends JFrame implements Observer, ActionListener
         }
         return null;
     }
-    public ImageIcon resizeBubbleTea(String image) {
-        ImageIcon imageIcon = new ImageIcon("Images/" + image); // load the image to a imageIcon
+    public ImageIcon resizeBubbleTea(String imageString) {
+        ImageIcon imageIcon = new ImageIcon("Images/" + imageString); // load the image to a imageIcon
         Image image = imageIcon.getImage(); // transform it 
         Image newimg = image.getScaledInstance(120, 150,  java.awt.Image.SCALE_SMOOTH); // scale it the smooth way  
         imageIcon = new ImageIcon(newimg);
+        return imageIcon;
     }
     
     public void makeOrderPanel() {
         populateOrderPanel();
-        
+        drinkImage = new JLabel();
+        drinkImage.setIcon(populateOrderIcon());
+        orderPanel.add(drinkImage, BorderLayout.EAST);
+        orderToMake.setFont(new Font("Chalkduster", Font.BOLD,22));
         orderToMake.setEditable(false);
         orderToMake.setOpaque(false);
-        orderPanel.add(orderToMake);
+        orderPanel.add(orderToMake, BorderLayout.WEST);
     }
     
     public void makeDrinkPanel() {
@@ -204,38 +217,49 @@ public class UI extends JFrame implements Observer, ActionListener
         JLabel currentCupStateTitle = new JLabel("Current Cup State");
         
         Ice =new JLabel("Ice");
+        Ice.setFont(new Font("Chalkduster", Font.BOLD,22));
         currentDrinkPanel.add(Ice);
         
         currentIce = new JLabel("" + model.getDrinks().getCurrentIce());
+        currentIce.setFont(new Font("Chalkduster", Font.BOLD,22));
         currentDrinkPanel.add(currentIce);
         
         Tea = new JLabel("Tea");
+        Tea.setFont(new Font("Chalkduster", Font.BOLD,22));
         currentDrinkPanel.add(Tea);
         
         currentTea = new JLabel(model.getDrinks().getCurrentTea());
+        currentTea.setFont(new Font("Chalkduster", Font.BOLD,22));
         currentDrinkPanel.add(currentTea);
         
         sugar = new JLabel("Sugar");
+        sugar.setFont(new Font("Chalkduster", Font.BOLD,22));
         currentDrinkPanel.add(sugar);
         
         currentSugar = new JLabel("" + model.getDrinks().getCurrentSugar());
+        currentSugar.setFont(new Font("Chalkduster", Font.BOLD,22));
         currentDrinkPanel.add(currentSugar);
         
         pobbles = new JLabel("Pobbles");
+        pobbles.setFont(new Font("Chalkduster", Font.BOLD,22));
         currentDrinkPanel.add(pobbles);
         
         currentPobbles = new JLabel(model.getDrinks().getCurrentPobbles());
+        currentPobbles.setFont(new Font("Chalkduster", Font.BOLD,22));
         currentDrinkPanel.add(currentPobbles);
         
     }
     public void scoreConditionsPanel() {
         conditionalPanel.setLayout(new GridLayout(2,2));
         JLabel scoreTitle = new JLabel("Score");
+        scoreTitle.setFont(new Font("Chalkduster", Font.BOLD,22));
         conditionalPanel.add(scoreTitle);
         scoreLabel = new JLabel("00"+score);
+        scoreLabel.setFont(new Font("Chalkduster", Font.BOLD,22));
         conditionalPanel.add(scoreLabel);
         makeTimerPanel();
         JLabel timeLabel = new JLabel("Time Remaining");
+        timeLabel.setFont(new Font("Chalkduster", Font.BOLD,22));
         conditionalPanel.add(timeLabel);
         conditionalPanel.add(timerPanel);
     }
@@ -256,6 +280,7 @@ public class UI extends JFrame implements Observer, ActionListener
     public void update(Observable o, Object obj) {
         //System.out.println("Observers are notified");
         if (timerPanel.getTimer().getStatus().equals("stopped")){
+            sound.stop();
             int start = JOptionPane.showConfirmDialog(null, "Game over!\n Your end score was " + score + ".\n Would you like to play again?","Welcome",JOptionPane.INFORMATION_MESSAGE);
         if (start != 0) {
             System.exit(0);
@@ -265,11 +290,13 @@ public class UI extends JFrame implements Observer, ActionListener
         }catch (Exception e){}
             model.getDrinks().setChangeDrinks(false);
             populateOrderPanel();
+            drinkImage.setIcon(populateOrderIcon());
             gamePanel.refreshCustomers(model.customer.incrementCustomers());
         
             int r =  model.getPlayer().getPosition();
             gamePanel.setPlayerLocation(r);
             gamePanel.repaint();
+            repaint();
         }
         } else {
         currentPobbles.setText(model.getDrinks().getCurrentPobbles());
@@ -289,6 +316,7 @@ public class UI extends JFrame implements Observer, ActionListener
             gamePanel.refreshCustomers(model.customer.incrementCustomers());
             timerPanel.getTimer().addToTimer();
             populateOrderPanel();
+            drinkImage.setIcon(populateOrderIcon());
         } 
         gamePanel.toggleBackground();
         gamePanel.repaint();
@@ -298,12 +326,30 @@ public class UI extends JFrame implements Observer, ActionListener
     }
     public void testButtonPanel() {
         testButtons = new JPanel();
+        testButtons.setBackground(Color.pink);
         
-        
-        JButton leftButton = new JButton("Left");
-        JButton rightButton = new JButton("Right");
-        JButton interactButton = new JButton("Interact");
-        
+        leftButton = new JButton();
+        //JButton button = new JButton();
+      try {
+        Image img = ImageIO.read(getClass().getResource("Images/ArrowLeft.png"));
+        leftButton.setIcon(new ImageIcon(img));
+      } catch (Exception ex) {
+        System.out.println(ex);
+      }
+        rightButton = new JButton();
+        try {
+        Image img = ImageIO.read(getClass().getResource("Images/ArrowRight.png"));
+        rightButton.setIcon(new ImageIcon(img));
+      } catch (Exception ex) {
+        System.out.println(ex);
+      }
+        interactButton = new JButton();
+        try {
+        Image img = ImageIO.read(getClass().getResource("Images/ButtonInteract.png"));
+        interactButton.setIcon(new ImageIcon(img));
+      } catch (Exception ex) {
+        System.out.println(ex);
+      }
         leftButton.addActionListener(this);
         rightButton.addActionListener(this);
         interactButton.addActionListener(this);
@@ -317,11 +363,11 @@ public class UI extends JFrame implements Observer, ActionListener
     public void actionPerformed(ActionEvent event) {
         //System.out.println(event.getActionCommand());
         //timerPanel.calculateCurrent();
-        if (event.getActionCommand().equals("Left")) {
+        if (event.getSource() == leftButton) {
             model.playerMove('a');
-        } else if (event.getActionCommand().equals("Right")) {
+        } else if (event.getSource() == rightButton) {
             model.playerMove('d');
-        } else if (event.getActionCommand().equals("Interact")) {
+        } else if (event.getSource() == interactButton) {
             model.makeDrinks();
         }
         

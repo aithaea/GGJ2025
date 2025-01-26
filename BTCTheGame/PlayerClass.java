@@ -13,12 +13,14 @@ public class PlayerClass
     private int posX, posY;
     public static int OGSPAWN = 14;
     private String direction = "front";
+    private double height;
     /**
      * Constructor for objects of class PlayerClass
      */
     public PlayerClass()
     {
         // spawn player
+        System.out.print("blah");
         this.posY=3;
         this.posX=OGSPAWN;
     }
@@ -43,19 +45,19 @@ public class PlayerClass
         if (direction.equals("left")){
         ImageIcon imageIcon = new ImageIcon("Images/" + "PlayerLeft.png"); // load the image to a imageIcon
         Image image = imageIcon.getImage(); // transform it 
-        Image newimg = image.getScaledInstance(120, 200,  java.awt.Image.SCALE_SMOOTH); // scale it the smooth way  
+        Image newimg = image.getScaledInstance(120, 150,  java.awt.Image.SCALE_SMOOTH); // scale it the smooth way  
         imageIcon = new ImageIcon(newimg);  // transform it back
         return imageIcon;
         } else if (direction.equals("right")){
             ImageIcon imageIcon = new ImageIcon("Images/" + "PlayerRight.png"); // load the image to a imageIcon
         Image image = imageIcon.getImage(); // transform it 
-        Image newimg = image.getScaledInstance(90, 195,  java.awt.Image.SCALE_SMOOTH); // scale it the smooth way  
+        Image newimg = image.getScaledInstance(90, 150,  java.awt.Image.SCALE_SMOOTH); // scale it the smooth way  
         imageIcon = new ImageIcon(newimg);  // transform it back
         return imageIcon;
         }
         ImageIcon imageIcon = new ImageIcon("Images/" + "PlayerForward.png"); // load the image to a imageIcon
         Image image = imageIcon.getImage(); // transform it 
-        Image newimg = image.getScaledInstance(120, 200,  java.awt.Image.SCALE_SMOOTH); // scale it the smooth way  
+        Image newimg = image.getScaledInstance(120, 150,  java.awt.Image.SCALE_SMOOTH); // scale it the smooth way  
         imageIcon = new ImageIcon(newimg);  // transform it back
         return imageIcon;
     }

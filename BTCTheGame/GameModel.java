@@ -18,14 +18,11 @@ public class GameModel extends Observable
     CustomerClass customer;
     DrinkMaking makeDrink;
     public GameModel() {
-        player=new PlayerClass();
+        
+        player = new PlayerClass();
         customer = new CustomerClass();
         makeDrink = new DrinkMaking();
-        
-        
-        
         view = new UI(this);
-        
         addObserver(view);
         //System.out.println(countObservers()+"");
         
