@@ -83,23 +83,112 @@ public class UI extends JFrame implements Observer, ActionListener
     public ImageIcon populateOrderIcon() {
         if (model.getDrinks().getGoalTea().equals("Nuclear Apple")) {
             if (model.getDrinks().getGoalPobbles().equals("Apple")) {
-                ImageIcon imageIcon = new ImageIcon("Images/" + "AppleApple.png"); // load the image to a imageIcon
-                Image image = imageIcon.getImage(); // transform it 
-                Image newimg = image.getScaledInstance(120, 150,  java.awt.Image.SCALE_SMOOTH); // scale it the smooth way  
-                imageIcon = new ImageIcon(newimg);
-                return imageIcon;
+                return resizeBubbleTea("AppleApple.png");
+
             } else if (model.getDrinks().getGoalPobbles().equals("Tapioka") ){
-                ImageIcon imageIcon = new ImageIcon("Images/" + "AppleTapioca.png"); // load the image to a imageIcon
-                Image image = imageIcon.getImage(); // transform it 
-                Image newimg = image.getScaledInstance(120, 150,  java.awt.Image.SCALE_SMOOTH); // scale it the smooth way  
-                imageIcon = new ImageIcon(newimg);
-                return imageIcon;
+                return resizeBubbleTea("AppleTapioca.png");
+                
+            }else if (model.getDrinks().getGoalPobbles().equals("Mango") ){
+                
+                return resizeBubbleTea("AppleMango.png");
+            }else if (model.getDrinks().getGoalPobbles().equals("Peach") ){
+                
+                return resizeBubbleTea("ApplePeach.png");
+            }else if (model.getDrinks().getGoalPobbles().equals("Lemon") ){
+                
+                return resizeBubbleTea("AppleLemon.png");
+            }else if (model.getDrinks().getGoalPobbles().equals("Blueberry") ){
+                
+                return resizeBubbleTea("AppleBlueberry.png");
             }
-            
         } else if(model.getDrinks().getGoalTea().equals("Peach")) {
-            
+            if (model.getDrinks().getGoalPobbles().equals("Apple")) {
+                return resizeBubbleTea("PeachApple.png");
+
+            } else if (model.getDrinks().getGoalPobbles().equals("Tapioka") ){
+                return resizeBubbleTea("PeachTapioca.png");
+                
+            }else if (model.getDrinks().getGoalPobbles().equals("Mango") ){
+                
+                return resizeBubbleTea("PeachMango.png");
+            }else if (model.getDrinks().getGoalPobbles().equals("Peach") ){
+                
+                return resizeBubbleTea("PeachPeach.png");
+            }else if (model.getDrinks().getGoalPobbles().equals("Lemon") ){
+                
+                return resizeBubbleTea("PeachLemon.png");
+            }else if (model.getDrinks().getGoalPobbles().equals("Blueberry") ){
+                
+                return resizeBubbleTea("PeachBlueberry.png");
+            }  
+        }    else if(model.getDrinks().getGoalTea().equals("Passionfruit")) {
+            if (model.getDrinks().getGoalPobbles().equals("Apple")) {
+                return resizeBubbleTea("PassionfruitApple.png");
+
+            } else if (model.getDrinks().getGoalPobbles().equals("Tapioka") ){
+                return resizeBubbleTea("PassionfruitTapioca.png");
+                
+            }else if (model.getDrinks().getGoalPobbles().equals("Mango") ){
+                
+                return resizeBubbleTea("PassionfruitMango.png");
+            }else if (model.getDrinks().getGoalPobbles().equals("Peach") ){
+                
+                return resizeBubbleTea("PassionfruitPeach.png");
+            }else if (model.getDrinks().getGoalPobbles().equals("Lemon") ){
+                
+                return resizeBubbleTea("PassionfruitLemon.png");
+            }else if (model.getDrinks().getGoalPobbles().equals("Blueberry") ){
+                
+                return resizeBubbleTea("PassionfruitBlueberry.png");
+            }  
+        }    else if(model.getDrinks().getGoalTea().equals("Milk")) {
+            if (model.getDrinks().getGoalPobbles().equals("Apple")) {
+                return resizeBubbleTea("MilkApple.png");
+
+            } else if (model.getDrinks().getGoalPobbles().equals("Tapioka") ){
+                return resizeBubbleTea("MilkTapioca.png");
+                
+            }else if (model.getDrinks().getGoalPobbles().equals("Mango") ){
+                
+                return resizeBubbleTea("MilkMango.png");
+            }else if (model.getDrinks().getGoalPobbles().equals("Peach") ){
+                
+                return resizeBubbleTea("MilkPeach.png");
+            }else if (model.getDrinks().getGoalPobbles().equals("Lemon") ){
+                
+                return resizeBubbleTea("MilkLemon.png");
+            }else if (model.getDrinks().getGoalPobbles().equals("Blueberry") ){
+                
+                return resizeBubbleTea("MilkBlueberry.png");
+            }  
+        }else if(model.getDrinks().getGoalTea().equals("Lemon")) {
+            if (model.getDrinks().getGoalPobbles().equals("Apple")) {
+                return resizeBubbleTea("LemonApple.png");
+
+            } else if (model.getDrinks().getGoalPobbles().equals("Tapioka") ){
+                return resizeBubbleTea("LemonTapioca.png");
+                
+            }else if (model.getDrinks().getGoalPobbles().equals("Mango") ){
+                
+                return resizeBubbleTea("LemonMango.png");
+            }else if (model.getDrinks().getGoalPobbles().equals("Peach") ){
+                
+                return resizeBubbleTea("LemonPeach.png");
+            }else if (model.getDrinks().getGoalPobbles().equals("Lemon") ){
+                
+                return resizeBubbleTea("LemonLemon.png");
+            }else if (model.getDrinks().getGoalPobbles().equals("Blueberry") ){
+                
+                return resizeBubbleTea("LemonBlueberry.png");
+            }  
         }
         return null;
+    }
+    public ImageIcon resizeBubbleTea(String image) {
+        ImageIcon imageIcon = new ImageIcon("Images/" + image); // load the image to a imageIcon
+        Image image = imageIcon.getImage(); // transform it 
+        Image newimg = image.getScaledInstance(120, 150,  java.awt.Image.SCALE_SMOOTH); // scale it the smooth way  
+        imageIcon = new ImageIcon(newimg);
     }
     
     public void makeOrderPanel() {
