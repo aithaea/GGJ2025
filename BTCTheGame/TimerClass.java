@@ -4,6 +4,8 @@ import java.awt.GridLayout;
 import java.util.concurrent.ScheduledExecutorService;
 import java.util.Observable;
 import java.util.Observer;
+import java.awt.GraphicsEnvironment;
+import java.awt.Font;
 
 //import javax.swing.*;
 import java.util.concurrent.TimeUnit;
@@ -30,6 +32,7 @@ public class TimerClass extends JPanel
     public TimerClass(UI ui)
     {
         displayedSeconds = new JLabel("00");
+        displayedSeconds.setFont(new Font("Chalkduster", Font.BOLD,18));
         colon = new JLabel(":");
         displayedMinutes = new JLabel("00");
         setLayout(new GridLayout(1,3));
