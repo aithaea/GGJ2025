@@ -9,6 +9,7 @@ import java.awt.event.ActionEvent;
 import javax.swing.JOptionPane;
 import java.awt.event.KeyListener;
 import java.awt.event.KeyEvent;
+import java.awt.Image;
 
 /**
  * Write a description of class UI here.
@@ -79,8 +80,31 @@ public class UI extends JFrame implements Observer, ActionListener
         orderToMake.setText(orderString);
     }
     
+    public ImageIcon populateOrderIcon() {
+        if (model.getDrinks().getGoalTea().equals("Nuclear Apple")) {
+            if (model.getDrinks().getGoalPobbles().equals("Apple")) {
+                ImageIcon imageIcon = new ImageIcon("Images/" + "AppleApple.png"); // load the image to a imageIcon
+                Image image = imageIcon.getImage(); // transform it 
+                Image newimg = image.getScaledInstance(120, 150,  java.awt.Image.SCALE_SMOOTH); // scale it the smooth way  
+                imageIcon = new ImageIcon(newimg);
+                return imageIcon;
+            } else if (model.getDrinks().getGoalPobbles().equals("Tapioka") ){
+                ImageIcon imageIcon = new ImageIcon("Images/" + "AppleTapioca.png"); // load the image to a imageIcon
+                Image image = imageIcon.getImage(); // transform it 
+                Image newimg = image.getScaledInstance(120, 150,  java.awt.Image.SCALE_SMOOTH); // scale it the smooth way  
+                imageIcon = new ImageIcon(newimg);
+                return imageIcon;
+            }
+            
+        } else if(model.getDrinks().getGoalTea().equals("Peach")) {
+            
+        }
+        return null;
+    }
+    
     public void makeOrderPanel() {
         populateOrderPanel();
+        
         orderToMake.setEditable(false);
         orderToMake.setOpaque(false);
         orderPanel.add(orderToMake);
